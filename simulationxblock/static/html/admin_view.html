@@ -1,0 +1,69 @@
+<!-- <div class="office-question-bank-admin">
+    <h2>Question Bank Admin</h2>
+    <textarea id="question-bank-json" rows="10" cols="50">{}</textarea>
+    <button id="save-question-bank">Save Question Bank</button>
+    <p id="admin-feedback"></p>
+</div> -->
+
+
+{% load i18n %}
+<div class="wrapper-comp-settings is-active editor-with-buttons" id="settings-tab">
+  <ul class="list-input settings-list">
+    <li class="field comp-setting-entry is-set">
+      <div class="wrapper-comp-setting">
+        <label class="label setting-label" for="xb_display_name">{% trans field_display_name.display_name %}</label>
+        <input class="input setting-input" name="xb_display_name" id="xb_display_name" value="{{ simulation_xblock.display_name }}" type="text" />
+      </div>
+      <span class="tip setting-help">{% trans field_display_name.help %}</span>
+    </li>
+      <li class="field comp-setting-entry is-set">
+        <div class="wrapper-comp-setting">
+          <label class="label setting-label" for="xb_field_edit_is_scorable">{% trans is_scorable.display_name %}</label>
+          <select class="field-data-control"
+                  id="xb_field_edit_is_scorable"
+                >
+                  <option value="1" {% if simulation_xblock.has_score %}selected{% endif %}>
+                    {% trans "True" %}{% if is_scorable.default %}&nbsp;&nbsp;&nbsp;&nbsp;{% trans "(Default)" %}{% endif %}
+                  </option>
+                  <option value="0" {% if not simulation_xblock.has_score %}selected{% endif %}>
+                    {% trans "False" %}{% if not is_scorable.default %}&nbsp;&nbsp;&nbsp;&nbsp;{% trans "(Default)" %}{% endif %}
+                  </option>
+          </select>
+        </div>
+        <span class="tip setting-help">{% trans is_scorable.help %}</span>
+      </li>
+      <li class="field comp-setting-entry is-set scorable">
+        <div class="wrapper-comp-setting">
+          <label class="label setting-label" for="xb_weight">{% trans weight.display_name %}</label>
+          <input class="input setting-input" name="xb_weight" id="xb_weight" value="{{ simulation_xblock.weight }}" type="text" />
+        </div>
+        <span class="tip setting-help">{% trans weight.help %}</span>
+      </li>
+      <li class="field comp-setting-entry is-set scorable">
+        <div class="wrapper-comp-setting">
+          <label class="label setting-label" for="xb_points">{% trans points.display_name %}</label>
+          <input class="input setting-input" name="xb_points" id="xb_points" value="{{ simulation_xblock.points }}" type="text" />
+        </div>
+        <span class="tip setting-help">{% trans points.help %}</span>
+      </li>
+      <li class="field comp-setting-entry is-set state-definitions">
+        <div class="wrapper-comp-setting">
+          <label class="label setting-label" for="xb_state_definitions">{% trans state_definitions.display_name %}</label>
+          <textarea class="input setting-input" id="xb_state_definitions" name="xb_state_definitions" rows="10" cols="50">{{ simulation_xblock.state_definitions }}</textarea>
+          <!-- <input class="input setting-input" name="xb_state_definitions" id="" value="{{ simulation_xblock.state_definitions }}" type="text" /> -->
+        </div>
+        <span class="tip setting-help">{% trans state_definitions.help %}</span>
+      </li>
+
+  </ul>
+  <div class="xblock-actions">
+    <ul>
+      <li class="action-item">
+        <a href="#" class="button action-primary save-button">{% trans "Save" %}</a>
+      </li>
+      <li class="action-item">
+        <a href="#" class="button cancel-button">{% trans "Cancel" %}</a>
+      </li>
+    </ul>
+  </div>
+</div>
